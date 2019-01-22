@@ -1,0 +1,58 @@
+<div class="register-form mt-5">
+  <form [formGroup]="registerForm" (ngSubmit)="btnRegister(registerForm)">
+    <h1>Register</h1>
+    <div class="form-group">
+      <label for="Name">Name</label>
+      <input type="text" formControlName="name" class="form-control" id="Name" required>
+      <div *ngIf="submitted && registerForm.controls['name'].errors" class="alert alert-danger">
+        <div *ngIf="registerForm.controls['name'].errors.required">Name is required</div>
+      </div>
+    </div>
+    <div class="form-group ">
+      <label for="Email">Email</label>
+      <input type="email" formControlName="email" class="form-control" id="Email" required>
+      <div *ngIf="registerForm.controls.email.errors && submitted" class="alert alert-danger">
+        <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
+        <div *ngIf="registerForm.controls.email.errors.email">Email must be a valid email address</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="login">Login</label>
+      <input type="text" formControlName="login" class="form-control" id="login" required>
+      <div *ngIf="submitted && registerForm.controls.login.errors" class="alert alert-danger">
+        <div *ngIf="registerForm.controls.login.errors.required">Login is required</div>
+      </div>
+    </div>
+    <div class="form-group ">
+      <label for="Password">Password</label>
+      <input type="password" formControlName="password" class="form-control" id="Password" required>
+      <div *ngIf="submitted && registerForm.controls.password.errors" class="alert alert-danger">
+        <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="alert alert-success" *ngIf="submitted && registerForm.valid">
+      <strong>Success!</strong>
+    </div>
+  </form>
+</div>
+<table class="table mt-5">
+  <thead class="thead-light">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Login</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.login}}</td>
+      <td>{{user.password}}</td>
+    </tr>
+  </tbody>
+</table>

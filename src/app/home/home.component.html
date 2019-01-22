@@ -1,0 +1,39 @@
+<!-- Page Content -->
+<h1 class="mt-5">To do</h1>
+<form class="form-inline" [formGroup]="todoForm" (ngSubmit)="btnAdd(todoForm)">
+  <div class="form-group">
+    <label for="todo ">Text </label>
+  </div>
+  <div class="form-group mx-sm-3">
+    <input type="text" formControlName="todo" class="form-control" id="todo">
+  </div>
+  <div class="form-group">
+    <div *ngIf="submitted && todoForm.controls.todo.errors" class="alert alert-danger">
+      <div *ngIf="todoForm.controls.todo.errors.required">Login is required</div>
+    </div>
+  </div>
+  <input type="submit" value="+" class="btn btn-primary">
+</form>
+<table class="table mt-5">
+  <thead class="thead-light">
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Done</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of todos; let i = index" >
+      <td>{{i+1}}</td>
+      <td>{{todo.title}}</td>
+      <td>{{todo.date}}</td>
+      <td>
+        <span class="text-success" *ngIf="todo.Done">{{todo.Done}}</span>
+        <span class="text-danger" *ngIf="!todo.Done">{{todo.Done}}</span>
+      </td>
+      <td><button (click)="bntEdit(i)" class="btn">Edit</button></td>
+    </tr>
+  </tbody>
+</table>
