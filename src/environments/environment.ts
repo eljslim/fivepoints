@@ -12,6 +12,7 @@ export const environment = {
     storageBucket: "firstangularapp-28c43.appspot.com",
     messagingSenderId: "667831660219"    
   }
+  
 };
 
 

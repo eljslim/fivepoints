@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService, private db:AngularFireDatabase) {
     this.loginForm = new FormGroup({
-      login: new FormControl('', Validators.required),
+      login: new FormControl('',[ Validators.required]),
       password: new FormControl('', Validators.required)
     })
   }

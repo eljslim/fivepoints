@@ -46,7 +46,7 @@ const routes: Routes = [
     CurrencyComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
